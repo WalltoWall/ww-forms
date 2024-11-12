@@ -1,0 +1,40 @@
+{
+  "name": "walltowall/ww-forms",
+  "description": "ACF Pro form builder",
+  "type": "wordpress-plugin",
+  "license": "MIT",
+  "version": "1.0.0",
+  "autoload": {
+    "psr-4": {
+      "WWForms\\": "WWForms/"
+    }
+  },
+  "minimum-stability": "stable",
+  "require": {
+    "php": "^8.3",
+    "composer/installers": "^2.3"
+  },
+  "require-dev": {
+    "laravel/pint": "^1.17",
+    "symfony/var-dumper": "^7.1",
+    "wpengine/advanced-custom-fields-pro": "^6.3"
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://connect.advancedcustomfields.com"
+    }
+  ],
+  "extra": {
+    "installer-paths": {
+      "wordpress/wp-content/plugins/{$name}": [
+        "wpengine/advanced-custom-fields-pro"
+      ]
+    }
+  },
+  "config": {
+    "allow-plugins": {
+      "composer/installers": true
+    }
+  }
+}

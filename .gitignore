@@ -1,0 +1,14 @@
+# Node Dependencies
+node_modules/
+
+# PHP Dependencies
+vendor/
+
+# Composer auth for ACF Pro
+auth.json
+
+# Compiled Resources
+WWForms/assets/
+
+# Wordpress files
+wordpress/

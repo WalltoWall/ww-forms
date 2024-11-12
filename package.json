@@ -1,0 +1,17 @@
+{
+	"name": "@walltowall/ww-forms",
+	"description": "ACF Pro form builder",
+	"type": "module",
+	"scripts": {},
+	"devDependencies": {
+		"@types/node": "^22.7.7",
+		"postcss": "^8.4.47",
+		"postcss-import": "^16.1.0",
+		"prettier": "^3.3.3",
+		"typescript": "^5.6.3",
+		"vite": "^5.4.9"
+	},
+	"dependencies": {
+		"date-fns": "^4.1.0"
+	}
+}
