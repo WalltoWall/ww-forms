@@ -7,7 +7,7 @@ export default defineConfig({
     assetsDir: "",
     emptyOutDir: true,
     manifest: true,
-    outDir: "./src/assets",
+    outDir: "./WWForms/assets",
     terserOptions: { keep_classnames: /Element$/ },
     rollupOptions: {
       input: {

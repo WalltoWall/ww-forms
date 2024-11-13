@@ -11,19 +11,21 @@
 namespace WWForms;
 
 if (! file_exists($composer = dirname(__DIR__).'/ww-forms/vendor/autoload.php')) {
-	wp_die($composer);
-	wp_die('Error locating autoloader. Please run <code>composer install</code>.');
+  wp_die($composer);
+  wp_die('Error locating autoloader. Please run <code>composer install</code>.');
 }
 
 require_once $composer;
 
 use WWForms\Tables\Submissions;
+use WWForms\Actions;
+use WWForms\API\FieldsAPI;
 
 if ( ! class_exists( 'WWForms' ) ) :
 
 	class WWForms {
 		function __construct() {
-			add_action( 'acf/init', array( $this, 'load_plugin' ), 1, 0 );
+			add_action( 'plugins_loaded', array( $this, 'load_plugin' ), 1, 0 );
 			add_action( 'admin_notices', array( $this, 'missing_acf_notice' ), 10, 0 );
 		}
 
@@ -38,26 +40,8 @@ if ( ! class_exists( 'WWForms' ) ) :
 			}
 
 			Submissions::setup();
-
-			$typeJson = plugin_dir_path( __FILE__ ) . 'WWForms/json/post_type_672d3a48c09d0.json';
-			$typeJsonData = file_get_contents($typeJson);
-			$postType = json_decode($typeJsonData, true);
-
-			$type = acf_get_post_type($postType['key']); // post type key
-
-			if (empty($type)) {
-				acf_import_post_type($postType);
-			}
-
-			$groupJson = plugin_dir_path( __FILE__ ) . 'WWForms/json/group_672d3ad4b91b7.json';
-			$groupJsonData = file_get_contents($groupJson);
-			$fieldGroup = json_decode($groupJsonData, true);
-
-			$group = acf_get_field_group($fieldGroup['key']); // field group key
-
-			if (empty($group)) {
-				acf_import_field_group($fieldGroup);
-			}
+			Actions::setup();
+			FieldsAPI::install_fields();
 		}
 
 		/**

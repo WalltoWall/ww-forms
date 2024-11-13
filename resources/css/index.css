@@ -1,0 +1,20 @@
+.ww-form-control {
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.ww-form-label {
+  display: block;
+}
+
+.ww-input {
+  width: 100%;
+}
+
+.ww-dropdown-container {
+  position: relative;
+}
+
+.ww-dropdown-indicator {
+  pointer-events: none;
+}
