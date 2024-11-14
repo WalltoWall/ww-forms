@@ -19,6 +19,7 @@ require_once $composer;
 
 use WWForms\Tables\Submissions;
 use WWForms\Actions;
+use WWForms\Filters;
 use WWForms\API\FieldsAPI;
 
 if ( ! class_exists( 'WWForms' ) ) :
@@ -55,6 +56,7 @@ if ( ! class_exists( 'WWForms' ) ) :
 			}
 
 			FieldsAPI::install_fields();
+			Filters::setup();
 		}
 
 		/**

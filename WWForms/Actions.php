@@ -7,6 +7,12 @@ use WWForms\API\SubmissionsAPI;
 use WWForms\Helpers;
 
 class Actions {
+  private static function populate_shortcodes($column, $post_id) {
+    if ($column === 'shortcode') {
+      echo '[ww_form id="' . $post_id . '"]';
+    }
+  }
+
   private static function submissions_markup() {
     Helpers::get_ww_template("submissions");
   }
@@ -29,8 +35,12 @@ class Actions {
   }
 
   public static function setup() {
+    add_action('manage_form_posts_custom_column', function ($column, $post_id) {
+      self::populate_shortcodes($column, $post_id);
+    }, 10, 2);
+
     add_action("add_meta_boxes", function () {
-      Actions::add_submissions_meta_box();
+      self::add_submissions_meta_box();
     });
 
     // adds google recaptcha js to the head
@@ -41,7 +51,7 @@ class Actions {
 
     // add form shortcode
     add_shortcode('ww_form', function ($attrs) {
-      return Actions::add_form_shortcode($attrs);
+      return self::add_form_shortcode($attrs);
     });
 
     // load scripts and styles
