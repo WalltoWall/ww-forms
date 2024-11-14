@@ -29,3 +29,6 @@ up:
 
 down:
 	@make -j4 docker-down
+
+postinstall:
+	@make composer install && vite-prod
