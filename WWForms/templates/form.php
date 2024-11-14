@@ -75,7 +75,7 @@ if ($form):
           <h2 class="ww-form-heading"><?= get_sub_field('value') ?></h2>
 
         <?php elseif (get_row_layout() == 'checkbox'): ?>
-          <label class="ww-form-control">
+          <label class="ww-form-control ww-checkbox-control">
             <input type="checkbox" name="<?= $name ?>" class="ww-checkbox" placeholder="<?= $placeholder ?>" <?= $required ? 'required' : '' ?> />
             <span class="ww-checkbox-label">
               <?= $label ?>
