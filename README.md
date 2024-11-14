@@ -24,8 +24,19 @@ ACF Pro form builder
 
 ## Installing
 
-Download the latest release from the Github releases tab and extract it into
-your project's plugins folder
+To install update your composer.json witht the folling lines:
+
+- Add `"walltowall/ww-forms": "dev-main"` to the require section
+- Add the following to the repositories section:
+
+```json
+{
+  "type": "vcs",
+  "url": "git@github.com:WalltoWall/ww-forms.git"
+}
+```
+
+- Update the muplugins section of installer paths with `"walltowall/ww-forms"`
 
 ## Local Development
 
