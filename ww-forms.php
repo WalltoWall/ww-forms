@@ -26,6 +26,7 @@ if ( ! class_exists( 'WWForms' ) ) :
 	class WWForms {
 		function __construct() {
 			add_action( 'plugins_loaded', array( $this, 'load_plugin' ), 1, 0 );
+			add_action( 'acf/init', array( $this, 'import_json' ));
 			add_action( 'admin_notices', array( $this, 'missing_acf_notice' ), 10, 0 );
 		}
 
@@ -41,6 +42,18 @@ if ( ! class_exists( 'WWForms' ) ) :
 
 			Submissions::setup();
 			Actions::setup();
+		}
+
+		/**
+		 * Install ACF fields from JSON
+		 *
+		 * @since 1.0.0
+		 */
+		function import_json() {
+			if (!$this->has_acf()) {
+				return;
+			}
+
 			FieldsAPI::install_fields();
 		}
 
