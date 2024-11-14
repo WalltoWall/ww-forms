@@ -1,0 +1,24 @@
+{
+  "resources/css/admin/index.css": {
+    "file": "adminCss-Ypnvgx0R.css",
+    "src": "resources/css/admin/index.css",
+    "isEntry": true
+  },
+  "resources/css/index.css": {
+    "file": "css-BwBRQlo8.css",
+    "src": "resources/css/index.css",
+    "isEntry": true
+  },
+  "resources/js/admin/index.ts": {
+    "file": "adminJs-INEbSdA7.js",
+    "name": "adminJs",
+    "src": "resources/js/admin/index.ts",
+    "isEntry": true
+  },
+  "resources/js/index.ts": {
+    "file": "js-DaZ44L39.js",
+    "name": "js",
+    "src": "resources/js/index.ts",
+    "isEntry": true
+  }
+}

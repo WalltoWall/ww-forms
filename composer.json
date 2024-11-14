@@ -36,10 +36,5 @@
     "allow-plugins": {
       "composer/installers": true
     }
-  },
-  "scripts": {
-    "post-root-package-install": [
-      "make postinstall"
-    ]
   }
 }
