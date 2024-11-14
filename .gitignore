@@ -12,3 +12,9 @@ WWForms/assets/
 
 # Wordpress files
 wordpress/
+
+# Build files
+build/
+
+# Mac files
+.DS_Store

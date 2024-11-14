@@ -2,6 +2,7 @@
 
 namespace WWForms;
 
+use WWForms\API\FormsAPI;
 use WWForms\API\SubmissionsAPI;
 use WWForms\Helpers;
 
@@ -34,11 +35,8 @@ class Actions {
 
     // adds google recaptcha js to the head
     add_action('wp_head', function () {
-      $recaptcha = get_field('google_recaptcha', 'option');
-      if ($recaptcha):
-          $siteKey = $recaptcha['site_key'];
-          echo $siteKey ? '<script src="https://www.google.com/recaptcha/api.js?render='.$siteKey.'"></script>' : '';
-      endif;
+      $site_key = get_field('site_key', 'option');
+      echo $site_key ? '<script src="https://www.google.com/recaptcha/api.js?render='.$site_key.'"></script>' : '';
     });
 
     // add form shortcode
@@ -75,8 +73,21 @@ class Actions {
     add_action('wp_ajax_load_submissions', function () {
       SubmissionsAPI::load_submissions();
     });
+
+    add_action('wp_ajax_delete_submissions', function () {
+      SubmissionsAPI::remove_submissions();
+    });
+
     add_action('wp_ajax_get_submissions_csv', function () {
       SubmissionsAPI::get_submissions_csv();
+    });
+
+    add_action('wp_ajax_submit_form_data', function () {
+      FormsAPI::submit_form();
+    });
+
+    add_action('wp_ajax_nopriv_submit_form_data', function () {
+      FormsAPI::submit_form();
     });
   }
 }

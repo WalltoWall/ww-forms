@@ -19,11 +19,10 @@ class FormsAPI {
     $recaptcha_token = $_POST['recaptchaToken'];
 
     if ($recaptcha_token):
-      $recaptcha = get_field('google_recaptcha', 'option');
-      $secretKey = $recaptcha['secret_key'];
+      $secret_key = get_field('secret_key', 'option');
       $response = wp_remote_post('https://www.google.com/recaptcha/api/siteverify', [
           'body' => [
-              'secret' => $secretKey,
+              'secret' => $secret_key,
               'response' => $recaptcha_token,
           ],
       ]);

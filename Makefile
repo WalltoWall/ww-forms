@@ -1,10 +1,16 @@
 #!make
 include .env
 
-all: up
+all: clean build/${PLUGIN_NAME}.zip
 
 setup:
 	@docker compose exec wordpress /scripts/setup.sh ${ADMIN_USER} ${ADMIN_PASS}
+
+clean:
+	rm -rf build/
+
+build/${PLUGIN_NAME}.zip:
+	./bin/build.sh ${PLUGIN_NAME}
 
 vite-dev:
 	@npx vite build --watch

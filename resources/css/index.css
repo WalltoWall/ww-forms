@@ -9,6 +9,12 @@
 
 .ww-input {
   width: 100%;
+  min-height: 2.5rem;
+  box-sizing: border-box;
+}
+
+.ww-textarea {
+  min-height: 6rem;
 }
 
 .ww-dropdown-container {
@@ -17,4 +23,8 @@
 
 .ww-dropdown-indicator {
   pointer-events: none;
+}
+
+.grecaptcha-badge {
+  visibility: hidden;
 }

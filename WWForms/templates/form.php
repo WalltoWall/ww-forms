@@ -1,16 +1,10 @@
 <?php
 
-$recaptcha = get_field('google_recaptcha', 'option');
-$site_key = '';
-
-if ($recaptcha):
-  $site_key = $recaptcha['site_key'];
-endif;
-
 $form = get_post($args['id']);
+$site_key = get_field('site_key', 'option');
 
 if ($form):
-  $submitLabel = get_field('submit_button_text', $form->ID);
+  $submit_label = get_field('submit_button_text', $form->ID);
 ?>
 
 <form class="ww-form" data-id="<?= $form->ID ?>" data-sitekey="<?= $site_key ?>">
@@ -149,6 +143,17 @@ if ($form):
   <?php endif;
     endwhile;
   endif; ?>
+
+  <div class="mt-11 md:mt-14">
+    <button type="submit" class="ww-form-submit"><?= $submit_label ? $submit_label : 'Submit' ?></button>
+
+    <?php if ($site_key): ?>
+      <p class="ww-recaptcha-text">This site is protected by reCAPTCHA and the Google
+        <a href="https://policies.google.com/privacy">Privacy Policy</a> and
+        <a href="https://policies.google.com/terms">Terms of Service</a> apply.
+      </p>
+    <?php endif; ?>
+  </div>
 </form>
 
 <?php endif; ?>
