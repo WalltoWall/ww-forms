@@ -144,7 +144,7 @@ if ($form):
     endwhile;
   endif; ?>
 
-  <div class="mt-11 md:mt-14">
+  <div class="ww-form-submit-container">
     <button type="submit" class="ww-form-submit"><?= $submit_label ? $submit_label : 'Submit' ?></button>
 
     <?php if ($site_key): ?>
