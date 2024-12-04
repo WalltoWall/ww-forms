@@ -3,7 +3,7 @@
 * Plugin Name: WW Forms
 * Plugin URI: https://www.walltowall.com
 * Description: ACF Pro form builder
-* Version: 1.0.0
+* Version: 1.1.0
 * Author: W|W Devs
 * Author URI: https://www.walltowall.com
 **/

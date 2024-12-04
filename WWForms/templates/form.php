@@ -140,6 +140,19 @@ if ($form):
             <input type="email" name="<?= $name ?>" class="ww-input ww-email" placeholder="<?= $placeholder ?>" <?= $required ? 'required' : '' ?> />
           </label>
 
+        <?php elseif (get_row_layout() == 'file_upload'):
+          $allowedFileTypes = get_sub_field('allowed_file_types');
+        ?>
+          <label class="ww-form-control">
+            <span class="ww-form-label">
+              <?= $label ?>
+              <?php if ($required): ?>
+                <span>*</span>
+              <?php endif; ?>
+            </span>
+            <input type="file" name="<?= $name ?>" class="ww-input ww-file-upload" accept="<?= $allowedFileTypes ?>" <?= $required ? 'required' : '' ?> />
+          </label>
+
   <?php endif;
     endwhile;
   endif; ?>

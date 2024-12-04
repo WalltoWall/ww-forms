@@ -16,6 +16,17 @@ class FormsAPI {
     $cleaned_data = str_replace("\\", "", $form_data);
     $submission_data = json_decode($cleaned_data, true);
 
+    foreach ($_FILES as $key => $value) {
+      $value['name'] = preg_replace( '/[^0-9a-zA-Z.]/', '', basename( $value['name'] ) );
+
+      $upload_overrides = array( 'test_form' => false );
+      $upload_result = wp_handle_upload($value, $upload_overrides);
+
+      if( $upload_result['url'] ):
+        $submission_data[$key] = $upload_result['url'];
+      endif;
+    }
+
     $recaptcha_token = $_POST['recaptchaToken'];
 
     if ($recaptcha_token):

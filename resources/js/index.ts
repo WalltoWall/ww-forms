@@ -37,6 +37,16 @@ const submitData = async (
   const formData = new FormData()
   const submission = Object.fromEntries(new FormData(form))
 
+  const fileFields = form.querySelectorAll(
+    "input[type=file]",
+  ) as NodeListOf<HTMLInputElement>
+  fileFields.forEach((fileField) => {
+    const files = fileField.files
+    if (files) {
+      formData.append(fileField.name, files[0])
+    }
+  })
+
   formData.append("action", "submit_form_data")
   formData.append("formId", form.dataset.id ?? "")
   formData.append("submission", JSON.stringify(submission))

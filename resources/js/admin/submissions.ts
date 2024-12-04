@@ -339,6 +339,14 @@ const renderTable = (fields: FormField[], submissions: FormSubmission[]) => {
         } else if (field.type === "checkbox") {
           const answer = submission.data[field.name] === "on" ? "true" : "false"
           tbodyHtml += `<td class="cell cell-large">${answer}</td>`
+        } else if (field.type === "file_upload") {
+          const answer = submission.data[field.name] ?? ""
+
+          if (answer) {
+            tbodyHtml += `<td class="cell cell-large"><a href="${answer}" target="_blank">Download File</a></td>`
+          } else {
+            tbodyHtml += `<td class="cell cell-large"></td>`
+          }
         } else {
           const answer = submission.data[field.name] ?? ""
           tbodyHtml += `<td class="cell cell-large">${answer}</td>`
